@@ -30,9 +30,7 @@
           look-at="[camera]"
         ></a-plane>
       </a-marker>
-      
-        <body style="margin: 0; overflow: hidden;">
-    <a-scene renderer="colorManagement: true">
+   
        <a-assets>
         <a-asset-item id="cat" response-type="arraybuffer" src="./cat.glb"></a-asset-item>
         <audio id="meow" src="./meow.mp3"></audio>
@@ -44,12 +42,11 @@
         rotation="0 0 0" 
       >
       </a-entity>
-      <a-sound src="#purring" autoplay="false"></a-sound>
-      <a-entity cursor="rayOrigin:mouse"></a-entity>
-      <a-entity cursor="fuse: true; fuseTimeout: 500"></a-entity> 
+    
       <a-entity camera></a-entity>
       <a-entity cursor="rayOrigin:mouse"></a-entity>
       <a-entity cursor="fuse: true; fuseTimeout: 500"></a-entity>
       <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
     </a-scene>
   </body>
+</html>
