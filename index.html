@@ -71,60 +71,6 @@
     </a-scene>
   </body>
 
-  <script>
-    window.onload = function() {
-        AFRAME.registerComponent('event-listener', {
-            init: function () {
-                this.audio = document.querySelector("#meow");
-
-                this.el.addEventListener('click', function (e) {
-		
-                    let cat = document.querySelector('#cat-model')
-		    cat.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
-                    this.audio.play();
-			
-                  console.log(e)
-                }.bind(this));
-		
-                this.el.addEventListener('mouseenter', function (e) {
-                    console.log(e)
-                }.bind(this));
-		    
-		 this.el.addEventListener('mouseleave', function (e) {
-			 console.log(e)
-                }.bind(this));
-		 
-		
-                this.el.addEventListener('touchmove', function (e) {
-                    //this.audio.play();
-			
-                  console.log(e)
-                }.bind(this));
-                this.el.addEventListener('touchstart', function (e) {
-		
-                    let cat = document.querySelector('#cat-model')
-		  cat.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
-                    this.audio.play();
-			console.log(e)
-                }.bind(this));
-		    
-		 this.el.addEventListener('touchend', function (e) {
-			 console.log(e)
-                }.bind(this));
-		    
-		
-                this.el.addEventListener('animation-finished', function (e) {
-			 console.log(e)
-                    let cat = document.querySelector('#cat-model')
-		    cat.removeAttribute('animation-mixer');
-                }.bind(this));
-		
-            }
-        });
-    };
-</script>
-
-
   <body style="margin: 0; overflow: hidden;">
     <a-scene renderer="colorManagement: true">
        <a-assets>
