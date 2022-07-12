@@ -1,43 +1,104 @@
-<!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script src="./script.js"></script>
-  <body style="margin: 0px; overflow: hidden">
-  
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>User Interaction Demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+	  
+    <script>
+    window.onload = function() {
+        AFRAME.registerComponent('event-listener', {
+            init: function () {
+                this.audio = document.querySelector("#meow");
 
-    <a-scene embedded arjs>
-      <a-assets>
+                this.el.addEventListener('click', function (e) {
+		
+                    let cat = document.querySelector('#cat-model')
+		    cat.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
+                    this.audio.play();
+			
+                  console.log(e)
+                }.bind(this));
+		
+                this.el.addEventListener('mouseenter', function (e) {
+                    console.log(e)
+                }.bind(this));
+		    
+		 this.el.addEventListener('mouseleave', function (e) {
+			 console.log(e)
+                }.bind(this));
+		 
+		
+                this.el.addEventListener('touchmove', function (e) {
+                    //this.audio.play();
+			
+                  console.log(e)
+                }.bind(this));
+                this.el.addEventListener('touchstart', function (e) {
+		
+                    let cat = document.querySelector('#cat-model')
+		    cat.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
+                    this.audio.play();
+			console.log(e)
+                }.bind(this));
+		    
+		 this.el.addEventListener('touchend', function (e) {
+			 console.log(e)
+                }.bind(this));
+		    
+		
+                this.el.addEventListener('animation-finished', function (e) {
+			 console.log(e)
+                    let cat = document.querySelector('#cat-model')
+		    cat.removeAttribute('animation-mixer');
+                }.bind(this));
+		
+            }
+        });
+    };
+</script>
+  </head>
 
-        <img id="description" src="./assets/description.jpg" />
-        <glb id="cat" src="./cat.glb"/>
+  <a-scene embedded arjs>
+    <a-assets>
 
-        
+      <img id="description" src="./assets/description.jpg" />
+      <glb id="cat" src="./cat.glb"/>
+
+      
+    </a-assets>
+
+    <a-marker animals type="pattern" url="./patt/pattern-cat.patt">
+      <a-plane
+        description-event
+        src="#description"
+        position="-1 0 -1"
+        rotation="1 0 0"
+        scale="1 1 1"
+        look-at="[camera]"
+      ></a-plane>
+    </a-marker>
+
+
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene renderer="colorManagement: true">
+       <a-assets>
+        <a-asset-item id="cat" response-type="arraybuffer" src="./cat.glb"></a-asset-item>
+        <audio id="meow" src="./assets/meow.mp3"></audio>
       </a-assets>
-
-      <a-marker animals type="pattern" url="./patt/pattern-cat.patt">
-        <a-plane
-          description-event
-          src="#description"
-          position="-1 0 -1"
-          rotation="1 0 0"
-          scale="1 1 1"
-          look-at="[camera]"
-        ></a-plane>
-      </a-marker>
-    
-      <a-entity camera></a-entity>
+      <a-entity event-listener id="cat-model"  
+        gltf-model="#cat-model" 
+        scale=".5 .5 .5" 
+        position = "0 0 -5" 
+        rotation="0 0 0" 
+      >
+      </a-entity>
+      <a-sound src="#meow" autoplay="false"></a-sound>
       <a-entity cursor="rayOrigin:mouse"></a-entity>
       <a-entity cursor="fuse: true; fuseTimeout: 500"></a-entity>
-      <a-entity cursor raycaster="far: 20; interval: 1000; objects: .clickable"></a-entity>
     </a-scene>
+
   </body>
 </html>
