@@ -22,83 +22,13 @@
 
       <a-marker animals type="pattern" url="./patt/pattern-cat.patt">
         <a-plane
-          dog-event
-          src="#dog"
+          cat-event
+          src="#cat"
           position="-1 0 -1"
           rotation="1 0 0"
           scale="1 1 1"
           look-at="[camera]"
         ></a-plane>
-
-        <a-plane
-          cat-event
-          src="#cat"
-          position="0 0 -1"
-          scale="1 1 1"
-          look-at="[camera]"
-        ></a-plane>
-        
-        <a-plane
-          mouse-event
-          src="#mouse"
-          position="1 0 -1"
-          scale="1 1 1"
-          look-at="[camera]"
-        ></a-plane>
-        
-        <a-plane
-          look-at="[camera]"
-          position="1 1 1"
-          scale="1 1 1"
-          color="#FFB6C1"
-        >
-          <a-text
-            id="dog"
-            value="hehehehehehehehehehehehehehehehhehehehe
-            position="1 1 1"
-            scale="0.7 0.7 0.7"
-            align="left"
-            color="white"
-            visible="false"
-            look-at="[camera]"
-          ></a-text>
-        </a-plane>
-
-        <a-plane
-          look-at="[camera]"
-          position="1 1 1"
-          scale="1 1 1"
-          color="#FFB6C1"
-        >
-          <a-text
-            id="cat"
-            value="hhhahahahhaahahhhahhahhahahahahahaha
-            position="1 1 1"
-            scale="0.7 0.7 0.7"
-            align="left"
-            color="blue"
-            visible="false"
-            look-at="[camera]"
-          ></a-text>
-        </a-plane>
-
-        <a-plane
-          look-at="[camera]"
-          position="1 1 1"
-          scale="1 1 1"
-          color="#FFB6C1"
-        >
-          <a-text
-            id="mouse"
-            value="huhuhuhuhuuhuhuhuhuhuhuhuhuhuhuhuhuhuhuhuhuhu!"
-            position="1 1 1"
-            scale="0.7 0.7 0.7"
-            align="left"
-            color="red"
-            visible="false"
-            look-at="[camera]"
-          ></a-text>
-        </a-plane>
       </a-marker>
       
       <a-entity camera></a-entity>
