@@ -18,6 +18,9 @@
       <a-assets>
 
         <img id="description" src="./assets/description.jpg" />
+        <glb id="cat" src="./cat.glb"/>
+
+        
       </a-assets>
 
       <a-marker animals type="pattern" url="./patt/pattern-cat.patt">
@@ -30,18 +33,6 @@
           look-at="[camera]"
         ></a-plane>
       </a-marker>
-   
-       <a-assets>
-        <a-asset-item id="cat" response-type="arraybuffer" src="./cat.glb"></a-asset-item>
-        <audio id="meow" src="./meow.mp3"></audio>
-      </a-assets>
-      <a-entity event-listener id="cat-model"  
-        gltf-model="#cat" 
-        scale="0.005 0.005 0.005" 
-        position = "-3 0 -3.5" 
-        rotation="0 0 0" 
-      >
-      </a-entity>
     
       <a-entity camera></a-entity>
       <a-entity cursor="rayOrigin:mouse"></a-entity>
